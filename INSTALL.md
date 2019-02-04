@@ -1,6 +1,9 @@
 INSTALLATION INSTRUCTIONS FOR OPENVAS-SCANNER
 =============================================
 
+!!!!
+use -DCMAKE_INSTALL_PREFIX=/usr 
+
 Please note: The reference system used by most of the developers is Debian
 GNU/Linux 'Stretch' 9. The build might fail on any other system. Also, it is
 necessary to install dependent development packages.

@@ -200,13 +200,13 @@ include_directories (${GLIB_INCLUDE_DIRS}
 
 
 # Build shared 
-add_library (openvas_nasl_shared SHARED ${FILES})
-set_target_properties (openvas_nasl_shared PROPERTIES OUTPUT_NAME "openvas_nasl")
-set_target_properties (openvas_nasl_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
-set_target_properties (openvas_nasl_shared PROPERTIES SOVERSION "${NASL_VERSION_MAJOR}")
-set_target_properties (openvas_nasl_shared PROPERTIES VERSION "${NASL_PACKAGE_VERSION}")
+add_library (barbara_nasl_shared SHARED ${FILES})
+set_target_properties (barbara_nasl_shared PROPERTIES OUTPUT_NAME "barbara_nasl")
+set_target_properties (barbara_nasl_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+set_target_properties (barbara_nasl_shared PROPERTIES SOVERSION "${NASL_VERSION_MAJOR}")
+set_target_properties (barbara_nasl_shared PROPERTIES VERSION "${NASL_PACKAGE_VERSION}")
 # line below is needed so it also works with no-undefined which is e.g. used by Mandriva
-target_link_libraries (openvas_nasl_shared openvas_misc_shared ${GLIB_LDFLAGS}
+target_link_libraries (barbara_nasl_shared barbara_misc_shared ${GLIB_LDFLAGS}
                          ${GCRYPT_LDFLAGS} ${GPGME_LDFLAGS} m
                          ${LIBGVM_BASE_LDFLAGS}
                          ${LIBGVM_UTIL_LDFLAGS}
@@ -216,23 +216,23 @@ target_link_libraries (openvas_nasl_shared openvas_misc_shared ${GLIB_LDFLAGS}
                          ${LINKER_HARDENING_FLAGS})
 
 # Link the openvas-nasl executable
-add_executable (openvas-nasl nasl.c)
-target_link_libraries (openvas-nasl openvas_nasl_shared openvas_misc_shared ${GNUTLS_LDFLAGS} ${LIBSSH_LDFLAGS})
+#add_executable (openvas-nasl nasl.c)
+#target_link_libraries (openvas-nasl openvas_nasl_shared openvas_misc_shared ${GNUTLS_LDFLAGS} ${LIBSSH_LDFLAGS})
 
 # Link the openvas-nasl-lint executable
-add_executable (openvas-nasl-lint nasl-lint.c)
-target_link_libraries (openvas-nasl-lint openvas_nasl_shared openvas_misc_shared ${GLIB_LDFLAGS} ${GIO_LDFLAGS})
+#add_executable (openvas-nasl-lint nasl-lint.c)
+#target_link_libraries (openvas-nasl-lint openvas_nasl_shared openvas_misc_shared ${GLIB_LDFLAGS} ${GIO_LDFLAGS})
 
 ## Install
 
-install (TARGETS openvas_nasl_shared openvas-nasl openvas-nasl-lint
+install (TARGETS barbara_nasl_shared #openvas-nasl openvas-nasl-lint
          RUNTIME DESTINATION ${BINDIR}
          LIBRARY DESTINATION ${LIBDIR}
          ARCHIVE DESTINATION ${LIBDIR})
 
-install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-nasl.1
-         DESTINATION ${DATADIR}/man/man1 )
+#install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-nasl.1
+#         DESTINATION ${DATADIR}/man/man1 )
 
-install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-nasl-lint.1
-         DESTINATION ${DATADIR}/man/man1 )
+#install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-nasl-lint.1
+#         DESTINATION ${DATADIR}/man/man1 )
 ## End

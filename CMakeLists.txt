@@ -207,7 +207,7 @@ set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${GPGME_C_FLAGS} -Wall -D_BSD_
 if (NOT SKIP_SRC)
   add_subdirectory (misc)
   add_subdirectory (nasl)
-  add_subdirectory (src)
+#  add_subdirectory (src)
 endif (NOT SKIP_SRC)
 
 ## Documentation

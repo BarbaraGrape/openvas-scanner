@@ -328,6 +328,8 @@ string : STRING1 { $$ = $1.val; } | STRING2 ;
 /* include */
 inc: INCLUDE '(' string ')'
 	{
+        $$ = NULL;
+/*
           char *tmp;
 	  naslctxt	subctx;
 
@@ -373,6 +375,7 @@ inc: INCLUDE '(' string ')'
             }
           nasl_set_filename (tmp);
           g_free (tmp);
+*/
 	} ;
 
 /* Function call */

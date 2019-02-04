@@ -111,14 +111,14 @@ set (MISC_VERSION "${MISC_VERSION_STRING}")
 
 # Build shared
 
-add_library (openvas_misc_shared SHARED ${FILES})
+add_library (barbara_misc_shared SHARED ${FILES})
 
-set_target_properties (openvas_misc_shared PROPERTIES OUTPUT_NAME "openvas_misc")
-set_target_properties (openvas_misc_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
-set_target_properties (openvas_misc_shared PROPERTIES SOVERSION "${MISC_VERSION_MAJOR}")
-set_target_properties (openvas_misc_shared PROPERTIES VERSION "${MISC_PACKAGE_VERSION}")
+set_target_properties (barbara_misc_shared PROPERTIES OUTPUT_NAME "barbara_misc")
+set_target_properties (barbara_misc_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+set_target_properties (barbara_misc_shared PROPERTIES SOVERSION "${MISC_VERSION_MAJOR}")
+set_target_properties (barbara_misc_shared PROPERTIES VERSION "${MISC_PACKAGE_VERSION}")
 
-target_link_libraries (openvas_misc_shared LINK_PRIVATE ${GNUTLS_LDFLAGS} ${UUID_LDFLAGS}
+target_link_libraries (barbara_misc_shared LINK_PRIVATE ${GNUTLS_LDFLAGS} ${UUID_LDFLAGS}
                        ${GLIB_LDFLAGS} ${PCAP_LDFLAGS}
                        ${LINKER_HARDENING_FLAGS})
 
@@ -139,7 +139,7 @@ endif (OPENVAS_SYSCONF_DIR)
 
 # install library
 
-install (TARGETS openvas_misc_shared
+install (TARGETS barbara_misc_shared
          RUNTIME DESTINATION ${BINDIR}
          LIBRARY DESTINATION ${LIBDIR}
          ARCHIVE DESTINATION ${LIBDIR})
